@@ -17,14 +17,18 @@ import com.pi.demo.model.SubType;
 @Entity
 public class Subscription implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id; // Clé primaire
+	private long id; // Primary Key
 	
 	private Double price;
 	private Date startDate;
 	private Date endDate;
-	private Boolean completed;
 	
 	@Enumerated(EnumType.STRING)
 	SubType subType;
@@ -36,14 +40,13 @@ public class Subscription implements Serializable {
 		super();
 	}
 
-	public Subscription(long id, Double price, Date startDate, Date endDate, Boolean completed, SubType subType,
+	public Subscription(long id, Double price, Date startDate, Date endDate, SubType subType,
 			Customer customer) {
 		super();
 		this.id = id;
 		this.price = price;
 		this.startDate = startDate;
 		this.endDate = endDate;
-		this.completed = completed;
 		this.subType = subType;
 		this.customer = customer;
 	}
@@ -78,14 +81,6 @@ public class Subscription implements Serializable {
 
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
-	}
-
-	public Boolean getCompleted() {
-		return completed;
-	}
-
-	public void setCompleted(Boolean completed) {
-		this.completed = completed;
 	}
 
 	public SubType getSubType() {
