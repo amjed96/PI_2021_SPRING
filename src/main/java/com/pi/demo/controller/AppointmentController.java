@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,12 +27,12 @@ public class AppointmentController implements Serializable {
 	@Autowired
 	AppointmentService appointmentService;
 	
-	@ResponseBody
-	@GetMapping("/test")
-	public Appointment test() {
-		Appointment app = new Appointment(1,null,"address",true,null,null);
-		return app;
-	}
+//	@ResponseBody
+//	@GetMapping("/test")
+//	public Appointment test() {
+//		Appointment app = new Appointment(1,null,"address",true,null,null);
+//		return app;
+//	}
 	
 	@GetMapping("/")
 	public List<Appointment> getAllAppointments() {
@@ -43,17 +45,20 @@ public class AppointmentController implements Serializable {
 		return app;
 	}
 	
-//	@PostMapping("/add")
-//	public void addAppointment(@RequestParam(value = "id") int id,
-//			@RequestParam(value ="address") String address,
-//			@RequestParam(value ="confirmation") boolean confirmation) {
-//		Appointment app = new Appointment(id,null,address,confirmation,null,null);
-//		appointmentService.add(app);
-//	}
+	@PostMapping("/add")
+	public Appointment addAppointment(@RequestBody Appointment app) {
+		return appointmentService.add(app);
+	}
 	
 	@DeleteMapping("/delete/{id}")
 	public void deleteAppointment(@PathVariable long id) {
 		appointmentService.deleteById(id);
+	}
+	
+	@PutMapping("/edit")
+	public Appointment editAppointment(@RequestBody Appointment app) {
+		appointmentService.findAppointmentById(app.getId());
+		return appointmentService.edit(app);
 	}
 
 }

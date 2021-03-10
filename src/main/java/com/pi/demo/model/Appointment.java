@@ -36,9 +36,9 @@ public class Appointment implements Serializable {
 		super();
 	}
 
-	public Appointment(long id, Timestamp dateA, String address, Boolean confirmation, Customer customerr,House house) {
+	public Appointment(Timestamp dateA, String address, Boolean confirmation, Customer customerr,House house) {
 		super();
-		this.id = id;
+		//this.id = id;
 		this.dateA = dateA;
 		this.address = address;
 		this.confirmation = confirmation;
