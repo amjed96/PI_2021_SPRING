@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import com.pi.demo.model.Customer;
 import com.pi.demo.model.SubType;
@@ -25,7 +26,7 @@ public class Subscription implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id; // Primary Key
-	
+	private boolean renew;
 	private Double price;
 	private Date startDate;
 	private Date endDate;
@@ -33,17 +34,18 @@ public class Subscription implements Serializable {
 	@Enumerated(EnumType.STRING)
 	SubType subType;
 	
-	@ManyToOne
+	@OneToOne(mappedBy="subscription")
 	private Customer customer;
-
+	
 	public Subscription() {
 		super();
 	}
 
-	public Subscription(long id, Double price, Date startDate, Date endDate, SubType subType,
+	public Subscription(long id, boolean renew, Double price, Date startDate, Date endDate, SubType subType,
 			Customer customer) {
 		super();
 		this.id = id;
+		this.renew = renew;
 		this.price = price;
 		this.startDate = startDate;
 		this.endDate = endDate;
@@ -57,6 +59,14 @@ public class Subscription implements Serializable {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public boolean isRenew() {
+		return renew;
+	}
+
+	public void setRenew(boolean renew) {
+		this.renew = renew;
 	}
 
 	public Double getPrice() {
@@ -98,5 +108,12 @@ public class Subscription implements Serializable {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	
+	
 	
 }
