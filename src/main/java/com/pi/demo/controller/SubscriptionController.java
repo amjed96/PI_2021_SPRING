@@ -42,6 +42,13 @@ public class SubscriptionController {
 	return subscription;
 	}
 	
+	@PutMapping("/update-subscription")
+	@ResponseBody
+	public Subscription updateSubscription(@RequestBody Subscription s) {
+	Subscription subscription = isubscriptionService.updateSubscription(s);
+	return subscription;
+	}
+	
 	@DeleteMapping("/delete-subscription/{subscription-id}")
 	@ResponseBody
 	public void deleteSubscription(@PathVariable("subscription-id") String SubscriptionId) {

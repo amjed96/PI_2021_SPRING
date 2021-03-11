@@ -22,12 +22,12 @@ public class SubscriptionService implements ISubscriptionService{
 		return subscriptionRepository.findById(Long.parseLong(id)).orElse(null);
 	}
 	
-	public Subscription addSubscription(Subscription u) {
-		return subscriptionRepository.save(u);
+	public Subscription addSubscription(Subscription s) {
+		return subscriptionRepository.save(s);
 	}
 	
-	public Subscription updateSubscription(Subscription u) {
-		return subscriptionRepository.save(u);
+	public Subscription updateSubscription(Subscription s) {
+		return subscriptionRepository.save(s);
 	}
 	
 	public void deleteSubscriptionById(String id) {
