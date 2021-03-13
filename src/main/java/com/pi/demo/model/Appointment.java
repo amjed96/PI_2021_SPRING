@@ -29,21 +29,21 @@ public class Appointment implements Serializable {
 	Customer customerr;
 	
 	@ManyToOne
-	House house;
+	Customer owner;
 
 	
 	public Appointment() {
 		super();
 	}
 
-	public Appointment(Timestamp dateA, String address, Boolean confirmation, Customer customerr,House house) {
+	public Appointment(Timestamp dateA, String address, Boolean confirmation, Customer customerr,Customer owner) {
 		super();
 		//this.id = id;
 		this.dateA = dateA;
 		this.address = address;
 		this.confirmation = confirmation;
 		this.customerr = customerr;
-		this.house = house;
+		this.owner = owner;
 	}
 
 	public long getId() {
@@ -86,12 +86,12 @@ public class Appointment implements Serializable {
 		this.customerr = customerr;
 	}
 
-	public House getHouse() {
-		return house;
+	public Customer getOwner() {
+		return owner;
 	}
 
-	public void setHouse(House house) {
-		this.house = house;
+	public void setOwner(Customer owner) {
+		this.owner = owner;
 	}
 
 	public static long getSerialversionuid() {
