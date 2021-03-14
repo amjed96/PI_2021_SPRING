@@ -1,5 +1,6 @@
 package com.pi.demo.services;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,6 +29,9 @@ public class AppointmentService {
 	}
 	
 	public Appointment add(Appointment app) {
+		Timestamp dateA = new Timestamp(System.currentTimeMillis());
+		app.setDateA(dateA);
+		app.setConfirmation(null);
 		return appointmentRepository.save(app);
 	}
 	
@@ -36,6 +40,16 @@ public class AppointmentService {
 	}
 	
 	public Appointment edit(Appointment app) {
+		return appointmentRepository.save(app);
+	}
+	
+	public Appointment confirm(Appointment app) {
+		app.setConfirmation(true);
+		return appointmentRepository.save(app);
+	}
+	
+	public Appointment deny(Appointment app) {
+		app.setConfirmation(false);
 		return appointmentRepository.save(app);
 	}
 

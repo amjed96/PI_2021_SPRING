@@ -1,7 +1,6 @@
 package com.pi.demo.controller;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +58,18 @@ public class AppointmentController implements Serializable {
 	public Appointment editAppointment(@RequestBody Appointment app) {
 		appointmentService.findAppointmentById(app.getId());
 		return appointmentService.edit(app);
+	}
+	
+	@PutMapping("/confirm/{id}")
+	public Appointment confirmAppointment(@PathVariable long id) {
+		Appointment app = appointmentService.findAppointmentById(id);
+		return appointmentService.confirm(app);
+	}
+	
+	@PutMapping("/decline/{id}")
+	public Appointment declineAppointment(@PathVariable long id) {
+		Appointment app = appointmentService.findAppointmentById(id);
+		return appointmentService.deny(app);
 	}
 
 }
