@@ -18,6 +18,11 @@ import javax.persistence.OneToOne;
 @Entity
 public class Announcement implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id; // Clé primaire
@@ -38,17 +43,26 @@ public class Announcement implements Serializable {
 	
 	@ManyToOne
 	private Customer customer;
-	
-	public Announcement(long id, String title, String description, boolean available, String type, Date duration) {
+
+	public Announcement() {
+		super();
+	}
+	public Announcement(long id, String title, String description, boolean available, String type, Date startDate,
+			Date endDate, Date duration, Set<Favorites> favorites, Property property, Customer customer) {
 		super();
 		this.id = id;
 		Title = title;
 		Description = description;
 		Available = available;
 		Type = type;
+		StartDate = startDate;
+		EndDate = endDate;
 		Duration = duration;
+		this.favorites = favorites;
+		this.property = property;
+		this.customer = customer;
+
 	}
-	
 	public long getId() {
 		return id;
 	}
@@ -112,6 +126,14 @@ public class Announcement implements Serializable {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
+	public Set<Favorites> getFavorites() {
+		return favorites;
+	}
+	public void setFavorites(Set<Favorites> favorites) {
+		this.favorites = favorites;
+	}
+
+	
 	
 }
 	

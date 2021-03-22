@@ -1,0 +1,79 @@
+2021-03-22 23:01:29.758  INFO 1324 --- [main] com.pi.demo.Pi2021Application            : Starting Pi2021Application using Java 1.8.0_261 on DESKTOP-SPF755D with PID 1324 (C:\Work\workspace-sts\PIDEV_SPRING\target\classes started by ASUS in C:\Work\workspace-sts\PIDEV_SPRING)
+2021-03-22 23:01:29.762  INFO 1324 --- [main] com.pi.demo.Pi2021Application            : No active profile set, falling back to default profiles: default
+2021-03-22 23:01:30.431  INFO 1324 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-03-22 23:01:30.481  INFO 1324 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2021-03-22 23:01:30.585  INFO 1324 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.pi.demo.repository.IAnnouncementRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2021-03-22 23:01:30.587  INFO 1324 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.pi.demo.repository.IAppointmentRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2021-03-22 23:01:30.588  INFO 1324 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 95 ms. Found 0 JDBC repository interfaces.
+2021-03-22 23:01:30.598  INFO 1324 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-03-22 23:01:30.598  INFO 1324 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-03-22 23:01:30.633  INFO 1324 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 28 ms. Found 2 JPA repository interfaces.
+2021-03-22 23:01:31.091  INFO 1324 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8085 (http)
+2021-03-22 23:01:31.097  INFO 1324 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-03-22 23:01:31.097  INFO 1324 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.43]
+2021-03-22 23:01:31.164  INFO 1324 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-03-22 23:01:31.172  INFO 1324 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1350 ms
+2021-03-22 23:01:31.339  INFO 1324 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-03-22 23:01:31.380  INFO 1324 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.28.Final
+2021-03-22 23:01:31.491  INFO 1324 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-03-22 23:01:31.581  INFO 1324 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-03-22 23:01:31.837  INFO 1324 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-03-22 23:01:31.839  INFO 1324 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2021-03-22 23:01:32.063  INFO 1324 --- [main] o.hibernate.id.enhanced.TableGenerator   : HHH000398: Explicit segment value for id generator [hibernate_sequences.sequence_name] suggested; using default [default]
+2021-03-22 23:01:32.417  INFO 1324 --- [main] org.hibernate.tuple.PojoInstantiator     : HHH000182: No default (no-argument) constructor for class: com.pi.demo.model.Announcement (class must be instantiated by Interceptor)
+2021-03-22 23:01:34.604  INFO 1324 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-03-22 23:01:34.616  INFO 1324 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-22 23:01:34.682  WARN 1324 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-03-22 23:01:35.045  INFO 1324 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 5d99abd2-0454-483a-a29f-b1b597d5f496
+
+2021-03-22 23:01:35.107  INFO 1324 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7e8f23ad, org.springframework.security.web.context.SecurityContextPersistenceFilter@6b126187, org.springframework.security.web.header.HeaderWriterFilter@52cb52bd, org.springframework.security.web.authentication.logout.LogoutFilter@3e753289, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5cffec7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7adae08e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7433ca19, org.springframework.security.web.session.SessionManagementFilter@3193e21d, org.springframework.security.web.access.ExceptionTranslationFilter@5d08976a]
+2021-03-22 23:01:35.234  INFO 1324 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-22 23:01:35.469  INFO 1324 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8085 (http) with context path ''
+2021-03-22 23:01:35.475  INFO 1324 --- [main] com.pi.demo.Pi2021Application            : Started Pi2021Application in 6.164 seconds (JVM running for 6.967)
+2021-03-22 23:01:39.448  INFO 1324 --- [http-nio-8085-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-03-22 23:01:39.450  INFO 1324 --- [http-nio-8085-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-03-22 23:01:39.452  INFO 1324 --- [http-nio-8085-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2021-03-22 23:02:37.613  INFO 8860 --- [main] com.pi.demo.Pi2021Application            : Starting Pi2021Application using Java 1.8.0_261 on DESKTOP-SPF755D with PID 8860 (C:\Work\workspace-sts\PIDEV_SPRING\target\classes started by ASUS in C:\Work\workspace-sts\PIDEV_SPRING)
+2021-03-22 23:02:37.617  INFO 8860 --- [main] com.pi.demo.Pi2021Application            : No active profile set, falling back to default profiles: default
+2021-03-22 23:02:38.246  INFO 8860 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-03-22 23:02:38.247  INFO 8860 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2021-03-22 23:02:38.281  INFO 8860 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.pi.demo.repository.IAnnouncementRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2021-03-22 23:02:38.283  INFO 8860 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.pi.demo.repository.IAppointmentRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2021-03-22 23:02:38.284  INFO 8860 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 34 ms. Found 0 JDBC repository interfaces.
+2021-03-22 23:02:38.295  INFO 8860 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-03-22 23:02:38.296  INFO 8860 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-03-22 23:02:38.338  INFO 8860 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 35 ms. Found 2 JPA repository interfaces.
+2021-03-22 23:02:38.914  INFO 8860 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8089 (http)
+2021-03-22 23:02:38.918  INFO 8860 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-03-22 23:02:38.922  INFO 8860 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.43]
+2021-03-22 23:02:38.992  INFO 8860 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-03-22 23:02:38.995  INFO 8860 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1322 ms
+2021-03-22 23:02:39.149  INFO 8860 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-03-22 23:02:39.188  INFO 8860 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.28.Final
+2021-03-22 23:02:39.302  INFO 8860 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-03-22 23:02:39.382  INFO 8860 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-03-22 23:02:39.637  INFO 8860 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-03-22 23:02:39.646  INFO 8860 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2021-03-22 23:02:39.857  INFO 8860 --- [main] o.hibernate.id.enhanced.TableGenerator   : HHH000398: Explicit segment value for id generator [hibernate_sequences.sequence_name] suggested; using default [default]
+2021-03-22 23:02:40.205  INFO 8860 --- [main] org.hibernate.tuple.PojoInstantiator     : HHH000182: No default (no-argument) constructor for class: com.pi.demo.model.Announcement (class must be instantiated by Interceptor)
+2021-03-22 23:02:42.006  INFO 8860 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-03-22 23:02:42.016  INFO 8860 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-22 23:02:42.057  WARN 8860 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-03-22 23:02:42.408  INFO 8860 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: a3995770-f20d-4d04-963a-52023a8b76fa
+
+2021-03-22 23:02:42.470  INFO 8860 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5834198f, org.springframework.security.web.context.SecurityContextPersistenceFilter@218df7d6, org.springframework.security.web.header.HeaderWriterFilter@5a0f87e5, org.springframework.security.web.authentication.logout.LogoutFilter@efe49ab, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@55053f81, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5cffec7, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4eb63dc8, org.springframework.security.web.session.SessionManagementFilter@1d1c37d5, org.springframework.security.web.access.ExceptionTranslationFilter@2c678c7b]
+2021-03-22 23:02:42.575  INFO 8860 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-22 23:02:42.805  INFO 8860 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8089 (http) with context path ''
+2021-03-22 23:02:42.810  INFO 8860 --- [main] com.pi.demo.Pi2021Application            : Started Pi2021Application in 5.579 seconds (JVM running for 6.406)
+2021-03-22 23:02:53.931  INFO 8860 --- [http-nio-8089-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-03-22 23:02:53.933  INFO 8860 --- [http-nio-8089-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-03-22 23:02:53.935  INFO 8860 --- [http-nio-8089-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2021-03-22 23:29:25.376  INFO 8860 --- [RMI TCP Connection(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2021-03-22 23:29:25.605  INFO 8860 --- [RMI TCP Connection(2)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-03-22 23:29:25.606  INFO 8860 --- [RMI TCP Connection(2)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-03-22 23:29:25.609  INFO 8860 --- [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-03-22 23:29:25.615  INFO 8860 --- [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
