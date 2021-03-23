@@ -46,4 +46,17 @@ public class AnnouncementService implements IAnnouncementService {
 		return announcementRepository.findById((long) Long.parseLong(id)).orElse(null);
 	}
 
+	@Override
+	public void DeleteAll() {
+		// TODO Auto-generated method stub
+		announcementRepository.deleteAll();
+		
+	}
+
+	/*@Override
+	public List<Announcement> FindByType(String type) {
+		// TODO Auto-generated method stub
+		return (List<Announcement>)announcementRepository.findByType(type);
+	}*/
+
 }

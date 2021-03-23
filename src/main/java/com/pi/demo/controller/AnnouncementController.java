@@ -53,4 +53,16 @@ public class AnnouncementController implements Serializable{
 			  {
 			  return announcementService.GetId(id);
 			  }
+			 
+			 @DeleteMapping("/delete")
+			   @ResponseBody
+			   public void deleteAll() {
+			   announcementService.DeleteAll();
+			   }
+			/* @GetMapping("/find/{type}")
+			 @ResponseBody
+			  public  List<Announcement> find(@PathVariable("type") String type) 
+			  {
+			  return announcementService.FindByType(type);
+			  }*/
 }

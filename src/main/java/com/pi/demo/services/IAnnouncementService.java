@@ -11,5 +11,7 @@ public interface IAnnouncementService
 	public void deleteAnnounce(long announceId);
 	public Announcement update(Announcement announcement);
 	public Announcement GetId(String id);
+	void DeleteAll();
+	//List<Announcement>FindByType(String type);
 
 }
