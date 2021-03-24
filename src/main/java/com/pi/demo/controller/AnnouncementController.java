@@ -58,11 +58,24 @@ public class AnnouncementController implements Serializable{
 			   @ResponseBody
 			   public void deleteAll() {
 			   announcementService.DeleteAll();
+			   
 			   }
-			/* @GetMapping("/find/{type}")
+			@GetMapping("/find/{type}")
 			 @ResponseBody
 			  public  List<Announcement> find(@PathVariable("type") String type) 
 			  {
 			  return announcementService.FindByType(type);
-			  }*/
+			  }
+			@GetMapping("/count")
+			 @ResponseBody
+			  public long Count() 
+			  {
+			  return announcementService.CountAnnouncement();
+			  }
+			@GetMapping("/count/{type}")
+			 @ResponseBody
+			  public long CountByType(@PathVariable("type") String type) 
+			  {
+			  return announcementService.CountAnnouncementByType(type);
+			  }
 }

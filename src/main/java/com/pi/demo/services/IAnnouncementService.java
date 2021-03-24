@@ -12,6 +12,7 @@ public interface IAnnouncementService
 	public Announcement update(Announcement announcement);
 	public Announcement GetId(String id);
 	void DeleteAll();
-	//List<Announcement>FindByType(String type);
-
+	List<Announcement>FindByType(String type);
+	public long  CountAnnouncement() ;
+	public long  CountAnnouncementByType(String type) ;
 }

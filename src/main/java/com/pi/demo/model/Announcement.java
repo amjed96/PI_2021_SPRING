@@ -34,7 +34,6 @@ public class Announcement implements Serializable {
 	private Date StartDate;
 	private Date EndDate;
 	private Date Duration;
-	
 	@ManyToMany(mappedBy="annoucements", cascade = CascadeType.ALL)
 	private Set<Favorites> favorites;
 	
@@ -43,12 +42,19 @@ public class Announcement implements Serializable {
 	
 	@ManyToOne
 	private Customer customer;
-
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="announcement")
+	private Set<Like> like;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="announcement")
+	private Set<Dislike> dislike;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="announcement")
+	private Set<Comment> comment;
 	public Announcement() {
 		super();
 	}
+
 	public Announcement(long id, String title, String description, boolean available, String type, Date startDate,
-			Date endDate, Date duration, Set<Favorites> favorites, Property property, Customer customer) {
+			Date endDate, Date duration, Set<Favorites> favorites, Property property, Customer customer, Set<Like> like,
+			Set<Dislike> dislike) {
 		super();
 		this.id = id;
 		Title = title;
@@ -61,8 +67,10 @@ public class Announcement implements Serializable {
 		this.favorites = favorites;
 		this.property = property;
 		this.customer = customer;
-
+		this.like = like;
+		this.dislike = dislike;
 	}
+
 	public long getId() {
 		return id;
 	}
@@ -131,6 +139,24 @@ public class Announcement implements Serializable {
 	}
 	public void setFavorites(Set<Favorites> favorites) {
 		this.favorites = favorites;
+	}
+
+
+	public Set<Like> getLike() {
+		return like;
+	}
+
+
+	public void setLike(Set<Like> like) {
+		this.like = like;
+	}
+
+	public Set<Dislike> getDislike() {
+		return dislike;
+	}
+
+	public void setDislike(Set<Dislike> dislike) {
+		this.dislike = dislike;
 	}
 
 	

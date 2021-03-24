@@ -53,10 +53,21 @@ public class AnnouncementService implements IAnnouncementService {
 		
 	}
 
-	/*@Override
+	@Override
 	public List<Announcement> FindByType(String type) {
 		// TODO Auto-generated method stub
 		return (List<Announcement>)announcementRepository.findByType(type);
-	}*/
+	}
+	@Override
+	public long  CountAnnouncement() {
+		// TODO Auto-generated method stub
+		return announcementRepository.count();
+	}
+
+	@Override
+	public long CountAnnouncementByType(String type) {
+		// TODO Auto-generated method stub
+		return announcementRepository.countByType(type);
+	}
 
 }
