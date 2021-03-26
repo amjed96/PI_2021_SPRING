@@ -1,12 +1,16 @@
 package com.pi.demo.services;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pi.demo.model.Announcement;
+import com.pi.demo.model.Favorites;
 import com.pi.demo.repository.IAnnouncementRepository;
+import com.pi.demo.repository.IFavoritesRepository;
 
 
 
@@ -14,6 +18,8 @@ import com.pi.demo.repository.IAnnouncementRepository;
 public class AnnouncementService implements IAnnouncementService {
 	@Autowired
 	IAnnouncementRepository announcementRepository ;
+	@Autowired
+	IFavoritesRepository favoriteRepository;
 	@Override
 	public Announcement ajouterAnnounce(Announcement announcement) 
 	{
@@ -69,5 +75,27 @@ public class AnnouncementService implements IAnnouncementService {
 		// TODO Auto-generated method stub
 		return announcementRepository.countByType(type);
 	}
+
+	@Override
+	public void affecterAnnouncementtoFavorites(int idA, int idF)
+	{
+		Favorites favorites =favoriteRepository.findById((long)idF).orElse(null);
+		Announcement announcement = announcementRepository.findById((long)idA).orElse(null);
+		favorites.getAnnoucements().add(announcement);
+		if(announcement.getFavorites() == null) {
+			Set<Favorites> setFavo = new HashSet<Favorites>();
+			setFavo.add(favorites);
+			announcement.setFavorites(setFavo); //update
+		}
+		else {
+			announcement.getFavorites().add(favorites);//affecta annoce f favoris
+		}
+		favoriteRepository.save(favorites);
+		announcementRepository.save(announcement); //ajout
+		
+		
+  }
+	
+	
 
 }

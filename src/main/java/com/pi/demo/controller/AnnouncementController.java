@@ -1,7 +1,13 @@
 package com.pi.demo.controller;
 
+import java.io.IOException;
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -10,10 +16,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.lowagie.text.DocumentException;
 import com.pi.demo.model.Announcement;
 import com.pi.demo.services.IAnnouncementService;
+import com.pi.demo.services.PDFExporterService;
 
 
 
@@ -78,4 +88,28 @@ public class AnnouncementController implements Serializable{
 			  {
 			  return announcementService.CountAnnouncementByType(type);
 			  }
+			@PutMapping("/affect/{idF}/{idA}")
+			 @ResponseBody
+			  public void affecter(@PathVariable("idF") int idF ,@PathVariable("idA") int idA) 
+			  {
+			       announcementService.affecterAnnouncementtoFavorites(idA, idF);
+			  }
+			
+	      @GetMapping("/annonce/export/pdf")
+			    public void exportToPDF(HttpServletResponse response) throws DocumentException, IOException {
+			        response.setContentType("application/pdf");
+			        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+			        String currentDateTime = dateFormatter.format(new Date());
+			         
+			        String headerKey = "Content-Disposition";
+			        String headerValue = "attachment; filename=annoucement_" + currentDateTime + ".pdf";
+			        response.setHeader(headerKey, headerValue);
+			         
+			        List<Announcement> a = announcementService.getAllAnnounce();
+			         
+			        PDFExporterService exporter = new PDFExporterService(a);
+			        exporter.export(response);
+			         
+			    }
+			
 }

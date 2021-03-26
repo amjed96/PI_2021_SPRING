@@ -15,4 +15,6 @@ public interface IAnnouncementService
 	List<Announcement>FindByType(String type);
 	public long  CountAnnouncement() ;
 	public long  CountAnnouncementByType(String type) ;
+	public void affecterAnnouncementtoFavorites(int idA , int idF);
+	
 }
