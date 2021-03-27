@@ -6,10 +6,14 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,18 +23,24 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import com.lowagie.text.DocumentException;
 import com.pi.demo.model.Announcement;
 import com.pi.demo.services.IAnnouncementService;
 import com.pi.demo.services.PDFExporterService;
+import com.pi.demo.services.SsePushNotificationService;
 
 
 
 @RestController
+@CrossOrigin(origins = "*")
 public class AnnouncementController implements Serializable{
 	@Autowired
 	IAnnouncementService announcementService ;
+	@Autowired
+	SsePushNotificationService service;
+	final List<SseEmitter> emitters = new CopyOnWriteArrayList<>();
 	  // Ajouter Annonce : http://localhost:8085/SpringMVC/servlet/add-announcement
 	  @PostMapping("/add-announcement")
 	  @ResponseBody
@@ -111,5 +121,18 @@ public class AnnouncementController implements Serializable{
 			        exporter.export(response);
 			         
 			    }
+	     
+
+	  	@PostMapping("/notification")
+	  	public ResponseEntity<SseEmitter> doNotify(@RequestBody Announcement announcement) throws InterruptedException, IOException {
+	  	  Announcement announcements = announcementService.ajouterAnnounce(announcement);
+	  		final SseEmitter emitter = new SseEmitter();
+	  		service.addEmitter(emitter);
+	  		service.doNotify();
+	  		emitter.onCompletion(() -> service.removeEmitter(emitter));
+	  		emitter.onTimeout(() -> service.removeEmitter(emitter));
+	  		return new ResponseEntity<>(emitter, HttpStatus.OK);
+	  	}
+
 			
 }

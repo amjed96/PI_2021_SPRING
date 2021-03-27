@@ -53,8 +53,8 @@ public class PDFExporterService
 	     
 	    private void writeTableData(PdfPTable table) {
 	        for (Announcement a : announcement) {
-	           // table.addCell(String.valueOf(a.getCustomer().getEmail()));
-	            table.addCell(String.valueOf(a.getCustomer().getFirstName()));
+	           table.addCell(String.valueOf(a.getCustomer().getDescriptionBlock()));
+	           // table.addCell(String.valueOf(a.getCustomer().getFirstName()));
 	            //table.addCell(String.valueOf(a.getCustomer().getLastName()));
 	            table.addCell(String.valueOf(a.getTitle()));
 	            table.addCell(String.valueOf(a.getDescription()));
