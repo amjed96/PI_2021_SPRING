@@ -26,8 +26,6 @@ public class Subscription implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id; // Primary Key
-	private boolean renew;
-	private Double price;
 	private Date startDate;
 	private Date endDate;
 	
@@ -45,8 +43,6 @@ public class Subscription implements Serializable {
 			Customer customer) {
 		super();
 		this.id = id;
-		this.renew = renew;
-		this.price = price;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.subType = subType;
@@ -59,22 +55,6 @@ public class Subscription implements Serializable {
 
 	public void setId(long id) {
 		this.id = id;
-	}
-
-	public boolean isRenew() {
-		return renew;
-	}
-
-	public void setRenew(boolean renew) {
-		this.renew = renew;
-	}
-
-	public Double getPrice() {
-		return price;
-	}
-
-	public void setPrice(Double price) {
-		this.price = price;
 	}
 
 	public Date getStartDate() {
