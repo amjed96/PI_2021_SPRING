@@ -30,13 +30,13 @@ public class SsePushNotificationService {
 	}
 
 	@Async
-	@Scheduled(fixedRate = 5000)
+	@Scheduled(fixedRate = 10)
 	public void doNotify() throws IOException {
 		List<SseEmitter> deadEmitters = new ArrayList<>();
 		emitters.forEach(emitter -> {
 			try {
 				emitter.send(SseEmitter.event()
-						.data(DATE_FORMATTER.format(new Date()) + " : " + UUID.randomUUID().toString()));
+						.data(DATE_FORMATTER.format(new Date()) + " : " + "notifation send"));
 			} catch (Exception e) {
 				deadEmitters.add(emitter);
 			}

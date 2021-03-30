@@ -26,10 +26,8 @@ public class Customer extends User implements Serializable {
 	
 	@OneToMany
 	private Set<Favorites> favorites;
-	
 	@OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
 	private Set<Announcement> announcements;
-	
 	@OneToOne
 	private Favorites Favori;
 	

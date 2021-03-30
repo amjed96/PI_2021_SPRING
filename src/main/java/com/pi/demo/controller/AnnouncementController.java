@@ -82,9 +82,15 @@ public class AnnouncementController implements Serializable{
 			   }
 			@GetMapping("/find/{type}")
 			 @ResponseBody
-			  public  List<Announcement> find(@PathVariable("type") String type) 
+			  public  List<Announcement> findType(@PathVariable("type") String type) 
 			  {
 			  return announcementService.FindByType(type);
+			  }
+			@GetMapping("/findtitle/{title}")
+			 @ResponseBody
+			  public  List<Announcement> findtitle(@PathVariable("title") String title) 
+			  {
+			  return announcementService.FindByTitle(title);
 			  }
 			@GetMapping("/count")
 			 @ResponseBody
@@ -105,8 +111,8 @@ public class AnnouncementController implements Serializable{
 			       announcementService.affecterAnnouncementtoFavorites(idA, idF);
 			  }
 			
-	      @GetMapping("/annonce/export/pdf")
-			    public void exportToPDF(HttpServletResponse response) throws DocumentException, IOException {
+	      @RequestMapping("/annonce/export/pdf/{id}")
+			    public void exportToPDF(HttpServletResponse response, @PathVariable("id") long id) throws DocumentException, IOException {
 			        response.setContentType("application/pdf");
 			        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
 			        String currentDateTime = dateFormatter.format(new Date());
@@ -115,10 +121,11 @@ public class AnnouncementController implements Serializable{
 			        String headerValue = "attachment; filename=annoucement_" + currentDateTime + ".pdf";
 			        response.setHeader(headerKey, headerValue);
 			         
-			        List<Announcement> a = announcementService.getAllAnnounce();
+			        List<Announcement> a = (List<Announcement>) announcementService.getPdf(id);
 			         
 			        PDFExporterService exporter = new PDFExporterService(a);
 			        exporter.export(response);
+			        
 			         
 			    }
 	     
@@ -133,6 +140,8 @@ public class AnnouncementController implements Serializable{
 	  		emitter.onTimeout(() -> service.removeEmitter(emitter));
 	  		return new ResponseEntity<>(emitter, HttpStatus.OK);
 	  	}
+	  	
+	  	
 
 			
 }

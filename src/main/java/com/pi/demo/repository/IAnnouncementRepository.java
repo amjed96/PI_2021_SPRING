@@ -10,11 +10,16 @@ import com.pi.demo.model.Announcement;
 public interface IAnnouncementRepository extends CrudRepository<Announcement, Long> {
 	void deleteAll();
 
-	@Query(value="SELECT * FROM announcement where type =:type",nativeQuery = true)
-	//List<Announcement> findByType(String type);
-	List<Announcement> findByType(@Param("type")String type);
+	@Query(value="SELECT * FROM announcement where type =:t ", nativeQuery = true)
+	List<Announcement> findByType(@Param("t")String type);
+	
+	@Query(value="SELECT * FROM announcement where title =:title ",nativeQuery = true)
+	List<Announcement> findByTitle(@Param("title")String title);
+	
 	long count();
+	
 	@Query(value="SELECT count('a') FROM announcement a where a.type =:type",nativeQuery = true)
 	long countByType(@Param("type") String type);
-
+	@Query(value="SELECT * FROM announcement a INNER JOIN customer c ON a.customer_id =c.id where c.id=:id",nativeQuery = true)
+	List<Announcement> pdf(@Param("id")long id);
 }

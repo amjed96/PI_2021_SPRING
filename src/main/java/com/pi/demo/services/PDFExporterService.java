@@ -7,22 +7,26 @@ import java.util.List;
  
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.lowagie.text.*;
 import com.lowagie.text.pdf.*;
 import com.pi.demo.model.Announcement;
+import com.pi.demo.repository.IAnnouncementRepository;
 @Service
 public class PDFExporterService 
 {
 	 private List<Announcement> announcement;
      
-	   
+	 @Autowired
+		IAnnouncementRepository announcementRepository ;
 	 
 	    public PDFExporterService(List<Announcement> announcement) {
 		super();
 		this.announcement = announcement;
 	}
+	    
 
 		private void writeTableHeader(PdfPTable table) {
 	        PdfPCell cell = new PdfPCell();
@@ -53,9 +57,9 @@ public class PDFExporterService
 	     
 	    private void writeTableData(PdfPTable table) {
 	        for (Announcement a : announcement) {
-	           table.addCell(String.valueOf(a.getCustomer().getDescriptionBlock()));
-	           // table.addCell(String.valueOf(a.getCustomer().getFirstName()));
-	            //table.addCell(String.valueOf(a.getCustomer().getLastName()));
+	          table.addCell(String.valueOf(a.getCustomer().getEmail()));
+	           table.addCell(String.valueOf(a.getCustomer().getFirstName()));
+	            table.addCell(String.valueOf(a.getCustomer().getLastName()));
 	            table.addCell(String.valueOf(a.getTitle()));
 	            table.addCell(String.valueOf(a.getDescription()));
 	            table.addCell(String.valueOf(a.getType()));
@@ -79,7 +83,7 @@ public class PDFExporterService
 	         
 	        PdfPTable table = new PdfPTable(6);
 	        table.setWidthPercentage(100f);
-	        table.setWidths(new float[] {1.5f, 3.5f, 3.0f, 3.0f, 1.5f,1.5f});
+	        table.setWidths(new float[] {3.5f, 3.5f, 3.0f, 3.0f, 1.5f,1.5f});
 	        table.setSpacingBefore(10);
 	         
 	        writeTableHeader(table);

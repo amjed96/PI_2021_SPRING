@@ -64,6 +64,7 @@ public class AnnouncementService implements IAnnouncementService {
 		// TODO Auto-generated method stub
 		return (List<Announcement>)announcementRepository.findByType(type);
 	}
+	
 	@Override
 	public long  CountAnnouncement() {
 		// TODO Auto-generated method stub
@@ -95,7 +96,16 @@ public class AnnouncementService implements IAnnouncementService {
 		
 		
   }
-	
-	
 
+	@Override
+	public    List<Announcement> getPdf(long id) {
+		// TODO Auto-generated method stub
+		return announcementRepository.pdf(id);
+	}
+	
+	@Override
+	public List<Announcement> FindByTitle(String title) {
+		// TODO Auto-generated method stub
+		return (List<Announcement>)announcementRepository.findByTitle(title);
+	}
 }

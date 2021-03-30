@@ -16,5 +16,7 @@ public interface IAnnouncementService
 	public long  CountAnnouncement() ;
 	public long  CountAnnouncementByType(String type) ;
 	public void affecterAnnouncementtoFavorites(int idA , int idF);
+	public List<Announcement> getPdf(long id);
+	public List<Announcement> FindByTitle(String title);
 	
 }
