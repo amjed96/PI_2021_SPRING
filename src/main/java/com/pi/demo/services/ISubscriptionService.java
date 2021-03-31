@@ -9,5 +9,6 @@ public interface ISubscriptionService {
 	Subscription addSubscription(Subscription s);
 	Subscription updateSubscription(Subscription s);
 	void deleteSubscriptionById(String id);
+	boolean checkifPro(String subscriptionId);
 	
 }

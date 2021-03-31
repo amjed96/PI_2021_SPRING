@@ -54,4 +54,26 @@ public class SubscriptionController {
 	public void deleteSubscription(@PathVariable("subscription-id") String SubscriptionId) {
 	isubscriptionService.deleteSubscriptionById(SubscriptionId);
 	}
+	
+	@GetMapping("/checkInsurance/{subscription-id}")
+	@ResponseBody
+	public String checkInsurance(@PathVariable("subscription-id") String SubscriptionId) {
+	if (isubscriptionService.checkifPro(SubscriptionId)){
+		return "Thank you for being a Pro Member, you have Insurance provided by our partner GAT ASSURANCES Tunisie www.gat.com.tn";
+	}
+	else {
+		return "You dont have Insurance, please buy a Pro Subscription";
+	}
+	}
+	
+	@GetMapping("/checkCamSur/{subscription-id}")
+	@ResponseBody
+	public String checkCamSur(@PathVariable("subscription-id") String SubscriptionId) {
+	if (isubscriptionService.checkifPro(SubscriptionId)){
+		return "Thank you for being a Pro Member, you have Camera Surveillance service provided by our partner PSS www.pss.com.tn";
+	}
+	else {
+		return "You dont have Camera Surveillance, please buy a Pro Subscription";
+	}
+	}
 }

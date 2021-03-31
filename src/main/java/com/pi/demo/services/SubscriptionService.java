@@ -52,6 +52,16 @@ public class SubscriptionService implements ISubscriptionService{
 		subscriptionRepository.save(s);
 	}
 	
+	public boolean checkifPro(String id) {
+		Subscription s = subscriptionRepository.findById(Long.parseLong(id)).orElse(null);
+		if (s.getSubType()==SubType.PRO) {
+			return true;
+		} else {
+			return false;
+		}
+		
+	}
+	
 	@Scheduled(fixedDelay = 10000, initialDelay = 1000)
 	public void resolveSubExpirationDate() {
 		List<Subscription> SubList = (List<Subscription>) subscriptionRepository.findAll();
