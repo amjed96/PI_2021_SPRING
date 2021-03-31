@@ -14,6 +14,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 public class Announcement implements Serializable {
@@ -31,8 +35,14 @@ public class Announcement implements Serializable {
 	private String Description;
 	private boolean Available;
 	private String Type;
+	@Temporal(TemporalType.DATE)
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date StartDate;
+	@Temporal(TemporalType.DATE)
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date EndDate;
+	@Temporal(TemporalType.DATE)
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date Duration;
 	@ManyToMany(mappedBy="annoucements", cascade = CascadeType.ALL)
 	private Set<Favorites> favorites;

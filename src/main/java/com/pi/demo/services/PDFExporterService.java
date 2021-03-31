@@ -27,6 +27,10 @@ public class PDFExporterService
 		this.announcement = announcement;
 	}
 	    
+	    public    List<Announcement> getPdf(long id) {
+			// TODO Auto-generated method stub
+			return announcementRepository.pdf(id);
+		}
 
 		private void writeTableHeader(PdfPTable table) {
 	        PdfPCell cell = new PdfPCell();

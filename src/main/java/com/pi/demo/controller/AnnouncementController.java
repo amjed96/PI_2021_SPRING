@@ -102,6 +102,7 @@ public class AnnouncementController implements Serializable{
 			 @ResponseBody
 			  public long CountByType(@PathVariable("type") String type) 
 			  {
+			  //System.out.println("Number of annoucements are :");
 			  return announcementService.CountAnnouncementByType(type);
 			  }
 			@PutMapping("/affect/{idF}/{idA}")
@@ -111,6 +112,12 @@ public class AnnouncementController implements Serializable{
 			       announcementService.affecterAnnouncementtoFavorites(idA, idF);
 			  }
 			
+			@GetMapping("/order")
+			 @ResponseBody
+			  public List<Announcement> orderByDate() 
+			  {
+			  return announcementService.orderByDate();
+			  }
 	      @RequestMapping("/annonce/export/pdf/{id}")
 			    public void exportToPDF(HttpServletResponse response, @PathVariable("id") long id) throws DocumentException, IOException {
 			        response.setContentType("application/pdf");

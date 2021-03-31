@@ -1,8 +1,12 @@
 package com.pi.demo.services;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +15,7 @@ import com.pi.demo.model.Announcement;
 import com.pi.demo.model.Favorites;
 import com.pi.demo.repository.IAnnouncementRepository;
 import com.pi.demo.repository.IFavoritesRepository;
+import com.sun.el.parser.ParseException;
 
 
 
@@ -74,6 +79,7 @@ public class AnnouncementService implements IAnnouncementService {
 	@Override
 	public long CountAnnouncementByType(String type) {
 		// TODO Auto-generated method stub
+		System.out.println("Number of annoucements are :");
 		return announcementRepository.countByType(type);
 	}
 
@@ -108,4 +114,21 @@ public class AnnouncementService implements IAnnouncementService {
 		// TODO Auto-generated method stub
 		return (List<Announcement>)announcementRepository.findByTitle(title);
 	}
+
+	@Override
+	public List<Announcement> orderByDate() {
+		// TODO Auto-generated method stub
+		return (List<Announcement>)announcementRepository.orderByDate();
+	}
+	
+	/*public void givenTwoDatesBeforeJava8_whenDifferentiating_thenWeGetSix()
+			  throws ParseException {
+		Announcement announcement = null;
+			    SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
+			    long diffInMillies = Math.abs(announcement.getEndDate().getTime() - announcement.getStartDate().getTime());
+			    long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+
+			  // assertEquals(diff, 6);
+			}*/
+	
 }

@@ -18,5 +18,6 @@ public interface IAnnouncementService
 	public void affecterAnnouncementtoFavorites(int idA , int idF);
 	public List<Announcement> getPdf(long id);
 	public List<Announcement> FindByTitle(String title);
+	public List<Announcement> orderByDate();
 	
 }
