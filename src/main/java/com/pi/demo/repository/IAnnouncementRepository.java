@@ -25,7 +25,7 @@ public interface IAnnouncementRepository extends CrudRepository<Announcement, Lo
 	@Query(value="SELECT * FROM announcement a INNER JOIN customer c ON a.customer_id =c.id where c.id=:id",nativeQuery = true)
 	List<Announcement> pdf(@Param("id")long id);
 	//TrierParDateEnd
-	@Query(value="SELECT * FROM announcement  ORDER BY end_date ", nativeQuery = true)
+	@Query(value="SELECT * FROM announcement  ORDER BY end_date   ", nativeQuery = true)
 	List<Announcement> orderByDate();
 	
 }

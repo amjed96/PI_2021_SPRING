@@ -41,9 +41,9 @@ public class Announcement implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date EndDate;
-	@Temporal(TemporalType.DATE)
-	@JsonFormat(pattern="yyyy-MM-dd")
-	private Date Duration;
+	/*@Temporal(TemporalType.DATE)
+	@JsonFormat(pattern="yyyy-MM-dd")*/
+	private long Duration;
 	@ManyToMany(mappedBy="annoucements", cascade = CascadeType.ALL)
 	private Set<Favorites> favorites;
 	
@@ -62,9 +62,10 @@ public class Announcement implements Serializable {
 		super();
 	}
 
+
 	public Announcement(long id, String title, String description, boolean available, String type, Date startDate,
-			Date endDate, Date duration, Set<Favorites> favorites, Property property, Customer customer, Set<Like> like,
-			Set<Dislike> dislike) {
+			Date endDate, long duration, Set<Favorites> favorites, Property property, Customer customer, Set<Like> like,
+			Set<Dislike> dislike, Set<Comment> comment) {
 		super();
 		this.id = id;
 		Title = title;
@@ -79,7 +80,9 @@ public class Announcement implements Serializable {
 		this.customer = customer;
 		this.like = like;
 		this.dislike = dislike;
+		this.comment = comment;
 	}
+
 
 	public long getId() {
 		return id;
@@ -111,13 +114,18 @@ public class Announcement implements Serializable {
 	public void setType(String type) {
 		Type = type;
 	}
-	public Date getDuration() {
+	
+	
+	public long getDuration() {
 		return Duration;
 	}
-	public void setDuration(Date duration) {
+
+
+	public void setDuration(long duration) {
 		Duration = duration;
 	}
-	
+
+
 	public Date getStartDate() {
 		return StartDate;
 	}

@@ -6,7 +6,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.TimeUnit;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -30,6 +32,7 @@ import com.pi.demo.model.Announcement;
 import com.pi.demo.services.IAnnouncementService;
 import com.pi.demo.services.PDFExporterService;
 import com.pi.demo.services.SsePushNotificationService;
+import com.sun.el.parser.ParseException;
 
 
 
@@ -131,12 +134,10 @@ public class AnnouncementController implements Serializable{
 			        List<Announcement> a = (List<Announcement>) announcementService.getPdf(id);
 			         
 			        PDFExporterService exporter = new PDFExporterService(a);
-			        exporter.export(response);
-			        
+			        exporter.export(response); 
 			         
 			    }
 	     
-
 	  	@PostMapping("/notification")
 	  	public ResponseEntity<SseEmitter> doNotify(@RequestBody Announcement announcement) throws InterruptedException, IOException {
 	  	  Announcement announcements = announcementService.ajouterAnnounce(announcement);
@@ -148,7 +149,7 @@ public class AnnouncementController implements Serializable{
 	  		return new ResponseEntity<>(emitter, HttpStatus.OK);
 	  	}
 	  	
-	  	
+	  
 
 			
 }

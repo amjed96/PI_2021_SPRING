@@ -28,7 +28,13 @@ public class AnnouncementService implements IAnnouncementService {
 	@Override
 	public Announcement ajouterAnnounce(Announcement announcement) 
 	{
-		// TODO Auto-generated method stub
+// TODO Auto-generated method stub
+		//SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
+	   long diffInMillies = Math.abs(announcement.getEndDate().getTime() - announcement.getStartDate().getTime());
+	    long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+	    announcement.setDuration(diff);
+	   // System.out.println(diff);
+	    //System.out.println(diff);
 		return announcementRepository.save(announcement);
 	}
 
@@ -99,8 +105,6 @@ public class AnnouncementService implements IAnnouncementService {
 		}
 		favoriteRepository.save(favorites);
 		announcementRepository.save(announcement); //ajout
-		
-		
   }
 
 	@Override
@@ -121,14 +125,5 @@ public class AnnouncementService implements IAnnouncementService {
 		return (List<Announcement>)announcementRepository.orderByDate();
 	}
 	
-	/*public void givenTwoDatesBeforeJava8_whenDifferentiating_thenWeGetSix()
-			  throws ParseException {
-		Announcement announcement = null;
-			    SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
-			    long diffInMillies = Math.abs(announcement.getEndDate().getTime() - announcement.getStartDate().getTime());
-			    long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
 
-			  // assertEquals(diff, 6);
-			}*/
-	
 }
