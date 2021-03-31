@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 import com.pi.demo.model.Property;
 
@@ -12,8 +14,27 @@ public class Furniture extends Property implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private Date date;
+	private String title;
+	
+	public Furniture(Date date, String title, String type, State state) {
+		super();
+		this.date = date;
+		this.title = title;
+		this.type = type;
+		this.state = state;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
 	private String type;
-	private String state;
+	@Enumerated(EnumType.STRING)
+	private State state;
 	
 	
 	public Furniture() {
@@ -36,11 +57,13 @@ public class Furniture extends Property implements Serializable {
 		this.type = type;
 	}
 
-	public String getState() {
+
+
+	public State getState() {
 		return state;
 	}
 
-	public void setState(String state) {
+	public void setState(State state) {
 		this.state = state;
 	}
 
