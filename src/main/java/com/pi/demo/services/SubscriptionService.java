@@ -1,5 +1,6 @@
 package com.pi.demo.services;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -39,6 +40,16 @@ public class SubscriptionService implements ISubscriptionService{
 	
 	public void deleteSubscriptionById(String id) {
 		subscriptionRepository.deleteById(Long.parseLong(id));
+	}
+	
+	public void setToPro(String id) {
+		Subscription s = subscriptionRepository.findById(Long.parseLong(id)).orElse(null);
+		s.setSubType(SubType.PRO);
+		s.setStartDate(new Date());
+		LocalDate TheEndDate = LocalDate.now();
+		TheEndDate = TheEndDate.plusDays(30);
+		s.setEndDate(java.sql.Date.valueOf(TheEndDate));
+		subscriptionRepository.save(s);
 	}
 	
 	@Scheduled(fixedDelay = 10000, initialDelay = 1000)

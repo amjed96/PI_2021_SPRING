@@ -6,14 +6,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pi.demo.services.PaypalService;
+import com.pi.demo.services.SubscriptionService;
 import com.pi.demo.utils.URLUtils;
 import com.paypal.api.payments.Links;
 import com.paypal.api.payments.Payment;
@@ -31,10 +32,12 @@ public class PaypalController {
 	@Autowired
 	private PaypalService paypalService;
 	
-	//@RequestMapping(method = RequestMethod.POST, value = "pay")
-	@PostMapping("/pay")
+	@Autowired
+	private SubscriptionService subscriptionService;
+	
+	@PostMapping("/pay/{subscription-id}")
 	@ResponseBody
-	public String pay(HttpServletRequest request){
+	public String pay(HttpServletRequest request, @PathVariable("subscription-id") String SubscriptionId){
 		String cancelUrl = URLUtils.getBaseURl(request) + "/api/paypal/" + PAYPAL_CANCEL_URL;
 		String successUrl = URLUtils.getBaseURl(request) + "/api/paypal/" + PAYPAL_SUCCESS_URL;
 		try {
@@ -48,6 +51,7 @@ public class PaypalController {
 					successUrl);
 			for(Links links : payment.getLinks()){
 				if(links.getRel().equals("approval_url")){
+					subscriptionService.setToPro(SubscriptionId);
 					return "redirect:" + links.getHref();
 				}
 			}
@@ -57,14 +61,12 @@ public class PaypalController {
 		return "redirect:/";
 	}
 
-	//@RequestMapping(method = RequestMethod.GET, value = PAYPAL_CANCEL_URL)
 	@GetMapping(PAYPAL_CANCEL_URL)
 	@ResponseBody
 	public String cancelPay(){
 		return "PaymentCancelled";
 	}
 
-	//@RequestMapping(method = RequestMethod.GET, value = PAYPAL_SUCCESS_URL)
 	@GetMapping(PAYPAL_SUCCESS_URL)
 	@ResponseBody
 	public String successPay(@RequestParam("paymentId") String paymentId, @RequestParam("PayerID") String payerId){
