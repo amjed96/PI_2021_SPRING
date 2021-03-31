@@ -16,33 +16,33 @@ import com.pi.demo.model.Subscription;
 import com.pi.demo.services.ISubscriptionService;
 
 @RestController
-@RequestMapping("/subscription")
+@RequestMapping("/api/subscription")
 public class SubscriptionController {
 
 	@Autowired
 	ISubscriptionService isubscriptionService;
 	
-	@GetMapping("/retrieve-all-subscriptions")
+	@GetMapping("/getall")
 	@ResponseBody
 	public List<Subscription> getSubscription() {
 	List<Subscription> list = isubscriptionService.retrieveAllSubscriptions();
 	return list;
 	}
 	
-	@GetMapping("/retrieve-subscription/{subscription-id}")
+	@GetMapping("/get/{subscription-id}")
 	@ResponseBody
 	public Subscription retrieveSubscription(@PathVariable("subscription-id") String SubscriptionId) {
 	return isubscriptionService.retrieveSubscription(SubscriptionId);
 	}
 	
-	@PostMapping("/add-subscription")
+	@PostMapping("/add")
 	@ResponseBody
 	public Subscription addSubscription(@RequestBody Subscription s) {
 	Subscription subscription = isubscriptionService.addSubscription(s);
 	return subscription;
 	}
 	
-	@PutMapping("/update-subscription")
+	@PutMapping("/update")
 	@ResponseBody
 	public Subscription updateSubscription(@RequestBody Subscription s) {
 	Subscription subscription = isubscriptionService.updateSubscription(s);

@@ -41,7 +41,7 @@ public class SubscriptionService implements ISubscriptionService{
 		subscriptionRepository.deleteById(Long.parseLong(id));
 	}
 	
-	@Scheduled(fixedRate = 100000)
+	@Scheduled(fixedDelay = 10000, initialDelay = 1000)
 	public void resolveSubExpirationDate() {
 		List<Subscription> SubList = (List<Subscription>) subscriptionRepository.findAll();
 		//for (Subscription sub : Sublist) {
