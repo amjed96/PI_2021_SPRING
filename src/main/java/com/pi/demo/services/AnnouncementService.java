@@ -1,6 +1,8 @@
 package com.pi.demo.services;
 
 import java.text.SimpleDateFormat;
+import java.time.Clock;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -41,6 +43,14 @@ public class AnnouncementService implements IAnnouncementService {
 	@Override
 	public List<Announcement> getAllAnnounce() {
 		// TODO Auto-generated method stub
+		Date sysDate =new Date();
+		 List<Announcement> annoucement = (List<Announcement>)announcementRepository.findAll();
+		for(Announcement a : annoucement){
+       // announcementRepository.findAll();
+			if(sysDate.compareTo(a.getEndDate())<0) {
+				a.setAvailable(false);
+				announcementRepository.save(a);								}
+		}
 		return  (List<Announcement>)announcementRepository.findAll();
 	}
 
@@ -54,6 +64,7 @@ public class AnnouncementService implements IAnnouncementService {
 	@Override
 	public Announcement update(Announcement announcement) {
 		// TODO Auto-generated method stub
+		
 		return announcementRepository.save(announcement);
 	}
 
@@ -124,6 +135,15 @@ public class AnnouncementService implements IAnnouncementService {
 		// TODO Auto-generated method stub
 		return (List<Announcement>)announcementRepository.orderByDate();
 	}
-	
-
+	/*@Override
+	public void Vailable (Announcement annoucement)
+	{
+	     Date sysDate =new Date();
+                  announcementRepository.findAll();
+ 
+					if(sysDate.compareTo(a.getEndDate())>0) {
+						.setAvailable(false);
+						announcementRepository.save();
+															}
+}*/
 }

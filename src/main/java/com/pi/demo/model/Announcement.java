@@ -102,12 +102,26 @@ public class Announcement implements Serializable {
 	public void setDescription(String description) {
 		Description = description;
 	}
+	
 	public boolean isAvailable() {
 		return Available;
 	}
+
+
 	public void setAvailable(boolean available) {
 		Available = available;
 	}
+	
+	public Set<Comment> getComment() {
+		return comment;
+	}
+
+
+	public void setComment(Set<Comment> comment) {
+		this.comment = comment;
+	}
+
+
 	public String getType() {
 		return Type;
 	}

@@ -149,7 +149,6 @@ public class AnnouncementController implements Serializable{
 	  		return new ResponseEntity<>(emitter, HttpStatus.OK);
 	  	}
 	  	
-	  
-
+	  	
 			
 }

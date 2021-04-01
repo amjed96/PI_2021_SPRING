@@ -19,5 +19,6 @@ public interface IAnnouncementService
 	public List<Announcement> getPdf(long id);
 	public List<Announcement> FindByTitle(String title);
 	public List<Announcement> orderByDate();
+	//public void Vailable();
 	
 }

@@ -28,4 +28,5 @@ public interface IAnnouncementRepository extends CrudRepository<Announcement, Lo
 	@Query(value="SELECT * FROM announcement  ORDER BY end_date   ", nativeQuery = true)
 	List<Announcement> orderByDate();
 	
+	
 }
