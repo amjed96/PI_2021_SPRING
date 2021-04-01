@@ -29,8 +29,8 @@ public class AppointmentService {
 	}
 	
 	public Appointment add(Appointment app) {
-		Timestamp dateA = new Timestamp(System.currentTimeMillis());
-		app.setDateA(dateA);
+//		Timestamp dateA = new Timestamp(System.currentTimeMillis());
+//		app.setDateA(dateA);
 		app.setConfirmation(null);
 		return appointmentRepository.save(app);
 	}
@@ -52,5 +52,13 @@ public class AppointmentService {
 		app.setConfirmation(false);
 		return appointmentRepository.save(app);
 	}
+	
+	public long countAppointments() {
+		return appointmentRepository.count();
+	}
+	
+//	public long countAppointmentsById(long id) {
+//		
+//	}
 
 }

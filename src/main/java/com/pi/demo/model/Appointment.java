@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import com.pi.demo.model.Customer;
 import com.pi.demo.model.House;
 
@@ -20,7 +22,9 @@ public class Appointment implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id; // Clé primaire
+	private Timestamp dateAppointment;
 	
+	@CreationTimestamp
 	private Timestamp dateA;
 	private String address;
 	private Boolean confirmation;
@@ -36,9 +40,10 @@ public class Appointment implements Serializable {
 		super();
 	}
 
-	public Appointment(Timestamp dateA, String address, Boolean confirmation, Customer customerr,Customer owner) {
+	public Appointment(Timestamp dateAppointment, Timestamp dateA, String address, Boolean confirmation, Customer customerr,Customer owner) {
 		super();
 		//this.id = id;
+		this.dateAppointment = dateAppointment;
 		this.dateA = dateA;
 		this.address = address;
 		this.confirmation = confirmation;
@@ -52,6 +57,14 @@ public class Appointment implements Serializable {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public Timestamp getDateAppointment() {
+		return dateAppointment;
+	}
+
+	public void setDateAppointment(Timestamp dateAppointment) {
+		this.dateAppointment = dateAppointment;
 	}
 
 	public Timestamp getDateA() {
