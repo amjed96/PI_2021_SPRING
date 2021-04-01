@@ -40,8 +40,8 @@ public class Customer extends User implements Serializable {
 	@OneToOne
     private Basket basket;
 	
-	@OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
-	private Set<Subscription> subscriptions;
+	@OneToOne
+	private Subscription subscription;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private GaranteeFolder guarenteeFolder;
@@ -52,9 +52,10 @@ public class Customer extends User implements Serializable {
 	}
 
 
+
 	public Customer(String picture, String descriptionBlock, String address, Set<Favorites> favorites,
 			Set<Announcement> announcements, Favorites favori, Set<Complaint> complaints, Set<Appointment> appointments,
-			Basket basket, Set<Subscription> subscriptions, GaranteeFolder guarenteeFolder) {
+			Basket basket, Subscription subscription, GaranteeFolder guarenteeFolder) {
 		super();
 		this.picture = picture;
 		DescriptionBlock = descriptionBlock;
@@ -65,7 +66,7 @@ public class Customer extends User implements Serializable {
 		this.complaints = complaints;
 		this.appointments = appointments;
 		this.basket = basket;
-		this.subscriptions = subscriptions;
+		this.subscription = subscription;
 		this.guarenteeFolder = guarenteeFolder;
 	}
 
@@ -160,13 +161,18 @@ public class Customer extends User implements Serializable {
 	}
 
 
-	public Set<Subscription> getSubscriptions() {
-		return subscriptions;
+	public Subscription getSubscription() {
+		return subscription;
 	}
 
 
-	public void setSubscriptions(Set<Subscription> subscriptions) {
-		this.subscriptions = subscriptions;
+	public void setSubscription(Subscription subscription) {
+		this.subscription = subscription;
+	}
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 
