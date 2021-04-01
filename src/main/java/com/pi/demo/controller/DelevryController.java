@@ -60,10 +60,10 @@ public class DelevryController {
 		
 		ds.marquerDone(idDelivery);
 		/*String msg = "votre livraison done : "
-		+ "http://localhost:8081/SpringMVC/servlet/getDeliveryStatus/";
+		+ "http://localhost:8084/SpringMVC/servlet/getDeliveryStatus/";
 msg = msg+d.getId();
 
-NexmoClient client = NexmoClient.builder().apiKey("2a815647").apiSecret("AFM0bqq8YawybYOD").build();
+NexmoClient client = NexmoClient.builder().apiKey("cf5867a0").apiSecret("idDX0Josfx4ZGlpA").build();
   TextMessage message = new TextMessage("Livraison",
                    "+21654319018",
                     msg
