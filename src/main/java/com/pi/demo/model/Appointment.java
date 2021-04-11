@@ -1,13 +1,15 @@
 package com.pi.demo.model;
 
 import java.io.Serializable;
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import com.pi.demo.model.Customer;
 import com.pi.demo.model.House;
@@ -20,7 +22,9 @@ public class Appointment implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id; // Clé primaire
+	private Timestamp dateAppointment;
 	
+	@CreationTimestamp
 	private Timestamp dateA;
 	private String address;
 	private Boolean confirmation;
@@ -29,21 +33,22 @@ public class Appointment implements Serializable {
 	Customer customerr;
 	
 	@ManyToOne
-	House house;
+	Customer owner;
 
 	
 	public Appointment() {
 		super();
 	}
 
-	public Appointment(long id, Timestamp dateA, String address, Boolean confirmation, Customer customerr,House house) {
+	public Appointment(Timestamp dateAppointment, Timestamp dateA, String address, Boolean confirmation, Customer customerr,Customer owner) {
 		super();
-		this.id = id;
+		//this.id = id;
+		this.dateAppointment = dateAppointment;
 		this.dateA = dateA;
 		this.address = address;
 		this.confirmation = confirmation;
 		this.customerr = customerr;
-		this.house = house;
+		this.owner = owner;
 	}
 
 	public long getId() {
@@ -52,6 +57,14 @@ public class Appointment implements Serializable {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public Timestamp getDateAppointment() {
+		return dateAppointment;
+	}
+
+	public void setDateAppointment(Timestamp dateAppointment) {
+		this.dateAppointment = dateAppointment;
 	}
 
 	public Timestamp getDateA() {
@@ -86,12 +99,12 @@ public class Appointment implements Serializable {
 		this.customerr = customerr;
 	}
 
-	public House getHouse() {
-		return house;
+	public Customer getOwner() {
+		return owner;
 	}
 
-	public void setHouse(House house) {
-		this.house = house;
+	public void setOwner(Customer owner) {
+		this.owner = owner;
 	}
 
 	public static long getSerialversionuid() {

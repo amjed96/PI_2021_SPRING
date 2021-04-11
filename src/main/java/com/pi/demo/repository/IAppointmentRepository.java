@@ -8,6 +8,4 @@ import com.pi.demo.model.Appointment;
 @Repository
 public interface IAppointmentRepository extends CrudRepository<Appointment, Long> {
 	
-	
-
 }
