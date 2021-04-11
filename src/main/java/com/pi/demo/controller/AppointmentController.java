@@ -114,11 +114,11 @@ public class AppointmentController implements Serializable {
 	
 	@PostMapping("/add")
 	public Appointment addAppointment(@RequestBody Appointment app) {
-		final SimpleMailMessage message = new SimpleMailMessage();
-		message.setFrom("amjedbouallegui@gmail.com");
-		message.setTo("mohamedamjed.bouallegui@esprit.tn");
-		message.setText("Good morning, you have an appointment !");
-		javaMailSender.send(message);
+//		final SimpleMailMessage message = new SimpleMailMessage();
+//		message.setFrom("amjedbouallegui@gmail.com");
+//		message.setTo("mohamedamjed.bouallegui@esprit.tn");
+//		message.setText("Good morning, you have an appointment !");
+//		javaMailSender.send(message);
 		return appointmentService.add(app);
 	}
 	
