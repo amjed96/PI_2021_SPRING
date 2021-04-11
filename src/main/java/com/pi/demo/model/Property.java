@@ -10,13 +10,16 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
 @Entity
+
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+
 public class Property implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
+
 	protected long id; // Clé primaire
 
 	private Float Price;

@@ -1,0 +1,24 @@
+package com.pi.demo.services;
+
+import java.util.List;
+
+import com.pi.demo.model.Announcement;
+
+public interface IAnnouncementService
+{
+	Announcement ajouterAnnounce( Announcement announcement);
+	public List<Announcement> getAllAnnounce();
+	public void deleteAnnounce(long announceId);
+	public Announcement update(Announcement announcement);
+	public Announcement GetId(String id);
+	void DeleteAll();
+	List<Announcement>FindByType(String type);
+	public long  CountAnnouncement() ;
+	public long  CountAnnouncementByType(String type) ;
+	public void affecterAnnouncementtoFavorites(int idA , int idF);
+	public List<Announcement> getPdf(long id);
+	public List<Announcement> FindByTitle(String title);
+	public List<Announcement> orderByDate();
+	//public void Vailable();
+	
+}

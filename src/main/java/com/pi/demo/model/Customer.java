@@ -25,10 +25,8 @@ public class Customer extends User implements Serializable {
 	
 	@OneToMany
 	private Set<Favorites> favorites;
-	
 	@OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
 	private Set<Announcement> announcements;
-	
 	@OneToOne
 	private Favorites Favori;
 	
@@ -39,21 +37,25 @@ public class Customer extends User implements Serializable {
 	private Set<Appointment> appointments;
  
 	
-	@OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
-	private Set<Subscription> subscriptions;
+	@OneToOne
+	private Subscription subscription;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private GaranteeFolder guarenteeFolder;
 
+	@OneToMany(mappedBy = "customerr", cascade = CascadeType.ALL)
+	private Set<Appointment> requests;
 	
 	public Customer() {
 		super();
 	}
 
-
 	public Customer(String picture, String descriptionBlock, String address, Set<Favorites> favorites,
 			Set<Announcement> announcements, Favorites favori, Set<Complaint> complaints, Set<Appointment> appointments,
-			 Set<Subscription> subscriptions, GaranteeFolder guarenteeFolder) {
+
+			Basket basket, Subscription subscription, GaranteeFolder guarenteeFolder) {
+
+
 		super();
 		this.picture = picture;
 		DescriptionBlock = descriptionBlock;
@@ -63,11 +65,114 @@ public class Customer extends User implements Serializable {
 		Favori = favori;
 		this.complaints = complaints;
 		this.appointments = appointments;
-	
-		this.subscriptions = subscriptions;
+
+		this.basket = basket;
+		this.subscription = subscription;
+
 		this.guarenteeFolder = guarenteeFolder;
 	}
+
+	public String getPicture() {
+		return picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+
+	public String getDescriptionBlock() {
+		return DescriptionBlock;
+	}
+
+	public void setDescriptionBlock(String descriptionBlock) {
+		DescriptionBlock = descriptionBlock;
+	}
+
+	public String getAddress() {
+		return Address;
+	}
+
+	public void setAddress(String address) {
+		Address = address;
+	}
+
+	public Set<Favorites> getFavorites() {
+		return favorites;
+	}
+
+	public void setFavorites(Set<Favorites> favorites) {
+		this.favorites = favorites;
+	}
+
+	public Set<Announcement> getAnnouncements() {
+		return announcements;
+	}
+
+	public void setAnnouncements(Set<Announcement> announcements) {
+		this.announcements = announcements;
+	}
+
+	public Favorites getFavori() {
+		return Favori;
+	}
+
+	public void setFavori(Favorites favori) {
+		Favori = favori;
+	}
+
+	public Set<Complaint> getComplaints() {
+		return complaints;
+	}
+
+	public void setComplaints(Set<Complaint> complaints) {
+		this.complaints = complaints;
+	}
+
+	public Set<Appointment> getAppointments() {
+		return appointments;
+	}
+
+	public void setAppointments(Set<Appointment> appointments) {
+		this.appointments = appointments;
+	}
+
+	public Basket getBasket() {
+		return basket;
+	}
+
+	public void setBasket(Basket basket) {
+		this.basket = basket;
+	}
+
+	public Subscription getSubscription() {
+		return subscription;
+	}
+
+	public void setSubscription(Subscription subscription) {
+		this.subscription = subscription;
+	}
+
+	public GaranteeFolder getGuarenteeFolder() {
+		return guarenteeFolder;
+	}
+
+	public void setGuarenteeFolder(GaranteeFolder guarenteeFolder) {
+		this.guarenteeFolder = guarenteeFolder;
+	}
+
+	public Set<Appointment> getRequests() {
+		return requests;
+	}
+
+	public void setRequests(Set<Appointment> requests) {
+		this.requests = requests;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	
-	
-		
+			
 }
+

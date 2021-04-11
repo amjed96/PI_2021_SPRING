@@ -16,10 +16,19 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 public class Announcement implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id; // Clé primaire
@@ -28,12 +37,17 @@ public class Announcement implements Serializable {
 	private String Description;
 	private boolean Available;
 	private String Type;
+	@Temporal(TemporalType.DATE)
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date StartDate;
+	@Temporal(TemporalType.DATE)
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date EndDate;
-	private Date Duration;
-	
-	
-	
+
+	/*@Temporal(TemporalType.DATE)
+	@JsonFormat(pattern="yyyy-MM-dd")*/
+	private long Duration;
+
 	@ManyToMany(mappedBy="annoucements", cascade = CascadeType.ALL)
 	private Set<Favorites> favorites;
 	
@@ -42,17 +56,38 @@ public class Announcement implements Serializable {
 	
 	@ManyToOne
 	private Customer customer;
-	
-	public Announcement(long id, String title, String description, boolean available, String type, Date duration) {
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="announcement")
+	private Set<Like> like;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="announcement")
+	private Set<Dislike> dislike;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="announcement")
+	private Set<Comment> comment;
+	public Announcement() {
+		super();
+	}
+
+
+	public Announcement(long id, String title, String description, boolean available, String type, Date startDate,
+			Date endDate, long duration, Set<Favorites> favorites, Property property, Customer customer, Set<Like> like,
+			Set<Dislike> dislike, Set<Comment> comment) {
 		super();
 		this.id = id;
 		Title = title;
 		Description = description;
 		Available = available;
 		Type = type;
+		StartDate = startDate;
+		EndDate = endDate;
 		Duration = duration;
+		this.favorites = favorites;
+		this.property = property;
+		this.customer = customer;
+		this.like = like;
+		this.dislike = dislike;
+		this.comment = comment;
 	}
-	
+
+
 	public long getId() {
 		return id;
 	}
@@ -71,25 +106,44 @@ public class Announcement implements Serializable {
 	public void setDescription(String description) {
 		Description = description;
 	}
+	
 	public boolean isAvailable() {
 		return Available;
 	}
+
+
 	public void setAvailable(boolean available) {
 		Available = available;
 	}
+	
+	public Set<Comment> getComment() {
+		return comment;
+	}
+
+
+	public void setComment(Set<Comment> comment) {
+		this.comment = comment;
+	}
+
+
 	public String getType() {
 		return Type;
 	}
 	public void setType(String type) {
 		Type = type;
 	}
-	public Date getDuration() {
+	
+	
+	public long getDuration() {
 		return Duration;
 	}
-	public void setDuration(Date duration) {
+
+
+	public void setDuration(long duration) {
 		Duration = duration;
 	}
-	
+
+
 	public Date getStartDate() {
 		return StartDate;
 	}
@@ -116,6 +170,32 @@ public class Announcement implements Serializable {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
+	public Set<Favorites> getFavorites() {
+		return favorites;
+	}
+	public void setFavorites(Set<Favorites> favorites) {
+		this.favorites = favorites;
+	}
+
+
+	public Set<Like> getLike() {
+		return like;
+	}
+
+
+	public void setLike(Set<Like> like) {
+		this.like = like;
+	}
+
+	public Set<Dislike> getDislike() {
+		return dislike;
+	}
+
+	public void setDislike(Set<Dislike> dislike) {
+		this.dislike = dislike;
+	}
+
+	
 	
 }
 	
