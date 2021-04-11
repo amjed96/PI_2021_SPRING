@@ -53,7 +53,7 @@ public class Customer extends User implements Serializable {
 	public Customer(String picture, String descriptionBlock, String address, Set<Favorites> favorites,
 			Set<Announcement> announcements, Favorites favori, Set<Complaint> complaints, Set<Appointment> appointments,
 
-			Basket basket, Subscription subscription, GaranteeFolder guarenteeFolder) {
+			/*Basket basket,*/ Subscription subscription, GaranteeFolder guarenteeFolder) {
 
 
 		super();
@@ -66,7 +66,7 @@ public class Customer extends User implements Serializable {
 		this.complaints = complaints;
 		this.appointments = appointments;
 
-		this.basket = basket;
+		//this.basket = basket;
 		this.subscription = subscription;
 
 		this.guarenteeFolder = guarenteeFolder;
@@ -136,13 +136,7 @@ public class Customer extends User implements Serializable {
 		this.appointments = appointments;
 	}
 
-	public Basket getBasket() {
-		return basket;
-	}
-
-	public void setBasket(Basket basket) {
-		this.basket = basket;
-	}
+	
 
 	public Subscription getSubscription() {
 		return subscription;
