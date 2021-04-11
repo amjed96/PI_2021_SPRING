@@ -71,122 +71,6 @@ public class Customer extends User implements Serializable {
 		this.guarenteeFolder = guarenteeFolder;
 	}
 
-
-	public String getPicture() {
-		return picture;
-	}
-
-
-	public void setPicture(String picture) {
-		this.picture = picture;
-	}
-
-
-	public String getDescriptionBlock() {
-		return DescriptionBlock;
-	}
-
-
-	public void setDescriptionBlock(String descriptionBlock) {
-		DescriptionBlock = descriptionBlock;
-	}
-
-
-	public String getAddress() {
-		return Address;
-	}
-
-
-	public void setAddress(String address) {
-		Address = address;
-	}
-
-
-	public Set<Favorites> getFavorites() {
-		return favorites;
-	}
-
-
-	public void setFavorites(Set<Favorites> favorites) {
-		this.favorites = favorites;
-	}
-
-
-	public Set<Announcement> getAnnouncements() {
-		return announcements;
-	}
-
-
-	public void setAnnouncements(Set<Announcement> announcements) {
-		this.announcements = announcements;
-	}
-
-
-	public Favorites getFavori() {
-		return Favori;
-	}
-
-
-	public void setFavori(Favorites favori) {
-		Favori = favori;
-	}
-
-
-	public Set<Complaint> getComplaints() {
-		return complaints;
-	}
-
-
-	public void setComplaints(Set<Complaint> complaints) {
-		this.complaints = complaints;
-	}
-
-
-	public Set<Appointment> getAppointments() {
-		return appointments;
-	}
-
-
-	public void setAppointments(Set<Appointment> appointments) {
-		this.appointments = appointments;
-	}
-
-
-	public Basket getBasket() {
-		return basket;
-	}
-
-
-	public void setBasket(Basket basket) {
-		this.basket = basket;
-	}
-
-
-	public Subscription getSubscription() {
-		return subscription;
-	}
-
-
-	public void setSubscription(Subscription subscription) {
-		this.subscription = subscription;
-	}
-
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-
-	public GaranteeFolder getGuarenteeFolder() {
-		return guarenteeFolder;
-	}
-
-
-	public void setGuarenteeFolder(GaranteeFolder guarenteeFolder) {
-		this.guarenteeFolder = guarenteeFolder;
-		this.requests = requests;
-	}
-
 	public String getPicture() {
 		return picture;
 	}
@@ -286,6 +170,8 @@ public class Customer extends User implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	
 			
 }
 
