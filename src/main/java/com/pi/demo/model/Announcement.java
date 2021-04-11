@@ -7,6 +7,8 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -41,9 +43,11 @@ public class Announcement implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date EndDate;
+
 	/*@Temporal(TemporalType.DATE)
 	@JsonFormat(pattern="yyyy-MM-dd")*/
 	private long Duration;
+
 	@ManyToMany(mappedBy="annoucements", cascade = CascadeType.ALL)
 	private Set<Favorites> favorites;
 	

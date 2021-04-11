@@ -10,21 +10,23 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
 @Entity
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+
 public class Property implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
-	private long id; // Clé primaire
-	
+
+	protected long id; // Clé primaire
+
 	private Float Price;
 	private String Picture;
-    private String Address;
-	
-    
-    public Property() {
+	private String Address;
+
+	public Property() {
 		super();
 	}
 
@@ -40,41 +42,33 @@ public class Property implements Serializable {
 		return id;
 	}
 
-
 	public void setId(long id) {
 		this.id = id;
 	}
-
 
 	public Float getPrice() {
 		return Price;
 	}
 
-
 	public void setPrice(Float price) {
 		Price = price;
 	}
-
 
 	public String getPicture() {
 		return Picture;
 	}
 
-
 	public void setPicture(String picture) {
 		Picture = picture;
 	}
-
 
 	public String getAddress() {
 		return Address;
 	}
 
-
 	public void setAddress(String address) {
 		Address = address;
 	}
-
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;

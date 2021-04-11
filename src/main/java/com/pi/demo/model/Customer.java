@@ -10,7 +10,6 @@ import javax.persistence.OneToOne;
 
 import com.pi.demo.model.Announcement;
 import com.pi.demo.model.Appointment;
-import com.pi.demo.model.Basket;
 import com.pi.demo.model.Complaint;
 import com.pi.demo.model.Favorites;
 import com.pi.demo.model.GaranteeFolder;
@@ -36,9 +35,7 @@ public class Customer extends User implements Serializable {
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="customerr")
 	private Set<Appointment> appointments;
-    
-	@OneToOne
-    private Basket basket;
+ 
 	
 	@OneToOne
 	private Subscription subscription;
@@ -55,7 +52,9 @@ public class Customer extends User implements Serializable {
 
 	public Customer(String picture, String descriptionBlock, String address, Set<Favorites> favorites,
 			Set<Announcement> announcements, Favorites favori, Set<Complaint> complaints, Set<Appointment> appointments,
+
 			Basket basket, Subscription subscription, GaranteeFolder guarenteeFolder) {
+
 
 		super();
 		this.picture = picture;
@@ -66,8 +65,10 @@ public class Customer extends User implements Serializable {
 		Favori = favori;
 		this.complaints = complaints;
 		this.appointments = appointments;
+
 		this.basket = basket;
 		this.subscription = subscription;
+
 		this.guarenteeFolder = guarenteeFolder;
 	}
 
