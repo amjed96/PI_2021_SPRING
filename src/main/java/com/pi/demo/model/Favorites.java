@@ -49,6 +49,15 @@ public class Favorites implements Serializable {
 		Type = type;
 	}
 	
+	
+	public Set<Announcement> getAnnoucements() {
+		return annoucements;
+	}
+
+	public void setAnnoucements(Set<Announcement> annoucements) {
+		this.annoucements = annoucements;
+	}
+
 	public Favorites() {
 		
 	}
